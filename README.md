@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pennywise — Personal Finance Manager
 
-## Getting Started
+A modern, minimal, professional, and visually appealing personal finance web application built with **Next.js 16**, **React 19**, **Tailwind CSS v4**, and **TypeScript**.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- **Financial Health Dashboard**: Real-time summary of net worth, monthly cash flow, savings rate, and quick-look previews across all modules.
+- **Transactions Management**: Filterable, searchable transaction feed with category tags, accounts, notes, and inflow/outflow balance statistics.
+- **Monthly Budgets**: Visual budget progress bars with automatic color alerts (green for on-track, amber for nearing limit, red for over-budget), remaining amounts, and cycle status.
+- **Savings Goals**: Milestone tracking with progress bars, target dates, monthly contribution recommendations, and completed goal badges.
+- **Responsive Layout**: Designed mobile-first with a desktop persistent sidebar, sticky header with quick actions, and mobile bottom navigation bar.
+- **Minimal & Zero-Dependency UI Primitives**: Fast, custom-built UI primitives (`Card`, `Button`, `Badge`, `StatCard`, `ProgressBar`, `Modal`, `Icons`) styled directly with Tailwind CSS.
+
+---
+
+## 🏗️ Architecture & Project Structure
+
+```text
+pennywise/
+├── app/
+│   ├── layout.tsx                # App-wide root layout & font setup
+│   ├── page.tsx                  # Dashboard / Overview page
+│   ├── transactions/page.tsx     # Transactions listing & filters
+│   ├── budgets/page.tsx          # Monthly budgets & categories
+│   ├── savings/page.tsx          # Savings goals & milestones
+│   └── globals.css               # Tailwind v4 theme & typography
+├── components/
+│   ├── ui/                       # Reusable minimal design primitives
+│   │   ├── Card.tsx
+│   │   ├── Button.tsx
+│   │   ├── Badge.tsx
+│   │   ├── StatCard.tsx
+│   │   ├── ProgressBar.tsx
+│   │   ├── Modal.tsx
+│   │   └── Icons.tsx
+│   ├── layout/                   # Structural navigation shell
+│   │   ├── AppShell.tsx
+│   │   ├── Sidebar.tsx
+│   │   ├── Header.tsx
+│   │   └── MobileNav.tsx
+│   └── modules/                  # Domain-specific UI blocks
+│       ├── dashboard/
+│       ├── transactions/
+│       ├── budgets/
+│       └── savings/
+├── types/                        # Strongly typed domain models
+│   ├── transaction.ts
+│   ├── budget.ts
+│   ├── savings.ts
+│   ├── account.ts
+│   └── index.ts
+└── lib/                          # Helpers & data
+    ├── utils.ts                  # Currency & date formatters, cn()
+    ├── constants.ts              # Categories, colors & nav items
+    └── mock-data.ts              # Realistic financial datasets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Install Dependencies
+```bash
+npm install
+```
 
-## Learn More
+### 2. Run the Development Server
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 3. Build for Production
+```bash
+npm run build
+```
