@@ -25,23 +25,22 @@ export function StatCard({
   className,
 }: StatCardProps) {
   const isPositive = change ? change.value >= 0 : false;
-  // For expenses, an increase is typically marked warning/red unless inverted
   const isFavorable = change ? (change.inverse ? !isPositive : isPositive) : true;
 
   return (
-    <Card hoverable className={cn('relative overflow-hidden', className)}>
-      <div className="flex items-start justify-between">
+    <Card hoverable className={cn('flex flex-col justify-between p-5 sm:p-6', className)}>
+      <div className="flex items-start justify-between gap-3">
         <div className="space-y-1">
-          <p className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             {title}
           </p>
-          <div className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
+          <div className="text-2xl sm:text-3xl font-bold tracking-tight tabular-nums text-zinc-950 dark:text-zinc-50">
             {value}
           </div>
         </div>
 
         {icon && (
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-zinc-200/80 bg-zinc-50 text-zinc-700 dark:border-zinc-800/80 dark:bg-zinc-800/60 dark:text-zinc-300">
             {icon}
           </div>
         )}
@@ -52,16 +51,16 @@ export function StatCard({
           {change && (
             <span
               className={cn(
-                'inline-flex items-center gap-0.5 font-semibold',
+                'inline-flex items-center gap-0.5 rounded px-1.5 py-0.5 text-xs font-semibold tabular-nums',
                 isFavorable
-                  ? 'text-emerald-600 dark:text-emerald-400'
-                  : 'text-rose-600 dark:text-rose-400'
+                  ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400'
+                  : 'bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-400'
               )}
             >
               {isPositive ? (
-                <IconArrowUpRight size={14} />
+                <IconArrowUpRight size={13} />
               ) : (
-                <IconArrowDownRight size={14} />
+                <IconArrowDownRight size={13} />
               )}
               {isPositive ? '+' : ''}
               {change.value.toFixed(1)}%
@@ -69,13 +68,13 @@ export function StatCard({
           )}
 
           {change?.periodText && (
-            <span className="text-zinc-500 dark:text-zinc-400">
+            <span className="text-zinc-500 dark:text-zinc-400 text-xs">
               {change.periodText}
             </span>
           )}
 
           {subtitle && !change && (
-            <span className="text-zinc-500 dark:text-zinc-400">{subtitle}</span>
+            <span className="text-zinc-500 dark:text-zinc-400 text-xs">{subtitle}</span>
           )}
         </div>
       )}

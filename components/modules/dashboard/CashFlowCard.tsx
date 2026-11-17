@@ -5,34 +5,34 @@ import { formatCurrency } from '@/lib/utils';
 
 export function CashFlowCard({ overview }: { overview: FinancialOverview }) {
   const totalFlow = overview.monthlyIncome;
-  const expenseRatio = (overview.monthlyExpenses / totalFlow) * 100;
-  const savingsRatio = (overview.netSavings / totalFlow) * 100;
+  const expenseRatio = totalFlow > 0 ? (overview.monthlyExpenses / totalFlow) * 100 : 0;
+  const savingsRatio = totalFlow > 0 ? (overview.netSavings / totalFlow) * 100 : 0;
 
   return (
-    <Card className="flex flex-col justify-between">
+    <Card className="flex flex-col justify-between p-5 sm:p-6">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
             <CardTitle>Monthly Cash Flow</CardTitle>
-            <CardDescription>Income vs expense allocation for November</CardDescription>
+            <CardDescription>Income distribution for November</CardDescription>
           </div>
-          <span className="rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-400">
+          <span className="rounded-md border border-emerald-200/60 bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-800 dark:border-emerald-800/60 dark:bg-emerald-950/50 dark:text-emerald-300">
             {overview.savingsRate}% Saved
           </span>
         </div>
       </CardHeader>
 
       <CardContent className="space-y-6">
-        {/* Visual Stacked Progress Bar */}
+        {/* Visual Stacked Bar */}
         <div className="space-y-2">
-          <div className="flex h-4 w-full overflow-hidden rounded-full bg-zinc-100 p-0.5 dark:bg-zinc-800">
+          <div className="flex h-3 w-full overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800">
             <div
-              className="h-full rounded-l-full bg-rose-500 transition-all duration-500"
+              className="h-full bg-rose-500 transition-all duration-300"
               style={{ width: `${expenseRatio}%` }}
               title={`Expenses: ${expenseRatio.toFixed(1)}%`}
             />
             <div
-              className="h-full rounded-r-full bg-emerald-500 transition-all duration-500"
+              className="h-full bg-emerald-500 transition-all duration-300"
               style={{ width: `${savingsRatio}%` }}
               title={`Savings: ${savingsRatio.toFixed(1)}%`}
             />
@@ -50,17 +50,21 @@ export function CashFlowCard({ overview }: { overview: FinancialOverview }) {
           </div>
         </div>
 
-        {/* Cash Flow Breakdown Metrics */}
-        <div className="grid grid-cols-2 gap-4 rounded-xl bg-zinc-50 p-4 dark:bg-zinc-900/60 border border-zinc-100 dark:border-zinc-800/60">
+        {/* Breakdown Metrics */}
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 rounded-xl border border-zinc-100 bg-zinc-50/70 p-4 dark:border-zinc-800/60 dark:bg-zinc-900/50">
           <div>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400">Total Inflow</p>
-            <p className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
+            <p className="text-[11px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+              Total Inflow
+            </p>
+            <p className="mt-1 text-base sm:text-lg font-bold tabular-nums text-emerald-600 dark:text-emerald-400">
               +{formatCurrency(overview.monthlyIncome)}
             </p>
           </div>
           <div>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400">Total Outflow</p>
-            <p className="text-lg font-bold text-rose-600 dark:text-rose-400">
+            <p className="text-[11px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+              Total Outflow
+            </p>
+            <p className="mt-1 text-base sm:text-lg font-bold tabular-nums text-rose-600 dark:text-rose-400">
               -{formatCurrency(overview.monthlyExpenses)}
             </p>
           </div>

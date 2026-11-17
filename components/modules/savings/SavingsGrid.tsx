@@ -11,7 +11,7 @@ interface SavingsGridProps {
   onAddFunds?: (goalId: string, amount: number) => void;
 }
 
-export function SavingsGrid({ goals, onAddFunds }: SavingsGridProps) {
+export function SavingsGrid({ goals }: SavingsGridProps) {
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {goals.map((goal) => {
@@ -20,38 +20,38 @@ export function SavingsGrid({ goals, onAddFunds }: SavingsGridProps) {
         const remaining = Math.max(0, goal.targetAmount - goal.currentAmount);
 
         return (
-          <Card key={goal.id} hoverable className="flex flex-col justify-between space-y-4">
+          <Card key={goal.id} hoverable className="flex flex-col justify-between p-5 sm:p-6 space-y-4">
             <div className="space-y-3">
               {/* Header */}
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400">
-                    <IconPiggyBank size={18} />
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 dark:bg-emerald-950/60 dark:text-emerald-400">
+                    <IconPiggyBank size={17} />
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                    <h4 className="text-xs sm:text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                       {goal.name}
                     </h4>
-                    <p className="text-xs text-zinc-400 capitalize">{goal.category}</p>
+                    <p className="text-[11px] text-zinc-400 capitalize">{goal.category}</p>
                   </div>
                 </div>
 
                 <Badge
-                  variant={isComplete ? 'success' : 'info'}
-                  className="text-[11px]"
+                  variant={isComplete ? 'success' : 'default'}
+                  className="text-[11px] py-0.5 px-2"
                 >
-                  {isComplete ? 'Reached' : `${progress}%`}
+                  {isComplete ? 'Achieved' : `${progress}%`}
                 </Badge>
               </div>
 
               {/* Progress & Values */}
               <div>
-                <div className="flex items-baseline justify-between">
-                  <span className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+                <div className="flex items-baseline justify-between text-xs sm:text-sm">
+                  <span className="text-lg sm:text-xl font-bold tracking-tight tabular-nums text-zinc-950 dark:text-zinc-50">
                     {formatCurrency(goal.currentAmount)}
                   </span>
-                  <span className="text-xs text-zinc-400">
-                    of {formatCurrency(goal.targetAmount)}
+                  <span className="text-[11px] text-zinc-400 dark:text-zinc-500 tabular-nums">
+                    target {formatCurrency(goal.targetAmount)}
                   </span>
                 </div>
 
@@ -59,7 +59,7 @@ export function SavingsGrid({ goals, onAddFunds }: SavingsGridProps) {
                   <ProgressBar
                     value={goal.currentAmount}
                     max={goal.targetAmount}
-                    variant={isComplete ? 'emerald' : 'indigo'}
+                    variant="emerald"
                     size="md"
                   />
                 </div>
@@ -67,11 +67,11 @@ export function SavingsGrid({ goals, onAddFunds }: SavingsGridProps) {
 
               {/* Monthly Contribution Pace */}
               {goal.monthlyContribution && !isComplete && (
-                <div className="rounded-lg bg-zinc-50 px-3 py-2 text-xs text-zinc-600 dark:bg-zinc-800/40 dark:text-zinc-300">
-                  <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+                <div className="rounded-lg border border-zinc-100 bg-zinc-50/70 px-3 py-2 text-xs text-zinc-600 dark:border-zinc-800/60 dark:bg-zinc-850/40 dark:text-zinc-300">
+                  <span className="font-semibold text-zinc-900 dark:text-zinc-100 tabular-nums">
                     {formatCurrency(goal.monthlyContribution)}
                   </span>{' '}
-                  monthly contribution pace
+                  monthly contribution target
                 </div>
               )}
             </div>
@@ -89,7 +89,7 @@ export function SavingsGrid({ goals, onAddFunds }: SavingsGridProps) {
                     <IconCheckCircle size={13} /> Done
                   </span>
                 ) : (
-                  <span className="text-zinc-500 dark:text-zinc-400">
+                  <span className="text-zinc-500 dark:text-zinc-400 tabular-nums">
                     {formatCurrency(remaining)} left
                   </span>
                 )}

@@ -21,30 +21,29 @@ export function ProgressBar({
   const percentage = max > 0 ? (value / max) * 100 : 0;
   const clampedDisplayWidth = Math.min(percentage, 100);
 
-  // Auto determine color based on consumption ratio (e.g. for budgets)
-  let barColor = 'bg-indigo-600 dark:bg-indigo-500';
+  let barColor = 'bg-emerald-600 dark:bg-emerald-500';
   if (variant === 'auto') {
     if (percentage > 100) {
-      barColor = 'bg-rose-500 dark:bg-rose-500';
+      barColor = 'bg-rose-500';
     } else if (percentage >= 85) {
-      barColor = 'bg-amber-500 dark:bg-amber-500';
+      barColor = 'bg-amber-500';
     } else {
-      barColor = 'bg-emerald-500 dark:bg-emerald-500';
+      barColor = 'bg-emerald-600 dark:bg-emerald-500';
     }
   } else if (variant === 'emerald') {
-    barColor = 'bg-emerald-500 dark:bg-emerald-400';
+    barColor = 'bg-emerald-600 dark:bg-emerald-500';
   } else if (variant === 'indigo') {
     barColor = 'bg-indigo-600 dark:bg-indigo-500';
   } else if (variant === 'amber') {
-    barColor = 'bg-amber-500 dark:bg-amber-400';
+    barColor = 'bg-amber-500';
   } else if (variant === 'rose') {
-    barColor = 'bg-rose-500 dark:bg-rose-500';
+    barColor = 'bg-rose-500';
   }
 
   const heights = {
     sm: 'h-1.5',
-    md: 'h-2.5',
-    lg: 'h-3.5',
+    md: 'h-2',
+    lg: 'h-2.5',
   };
 
   return (
@@ -57,7 +56,7 @@ export function ProgressBar({
       >
         <div
           className={cn(
-            'h-full rounded-full transition-all duration-500 ease-out',
+            'h-full rounded-full transition-all duration-300 ease-out',
             barColor
           )}
           style={{ width: `${clampedDisplayWidth}%` }}
@@ -70,7 +69,7 @@ export function ProgressBar({
 
       {showLabel && (
         <div className="flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400">
-          <span>{percentage.toFixed(0)}% used</span>
+          <span className="tabular-nums">{percentage.toFixed(0)}% used</span>
           {percentage > 100 && (
             <span className="font-semibold text-rose-600 dark:text-rose-400">
               Over budget

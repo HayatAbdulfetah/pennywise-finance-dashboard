@@ -52,7 +52,7 @@ export function NewGoalModal({ isOpen, onClose, onAddGoal }: NewGoalModalProps) 
       isOpen={isOpen}
       onClose={onClose}
       title="Create Savings Goal"
-      description="Define a new target to reach and track your milestone progress."
+      description="Define a new financial target and track contribution progress."
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -62,10 +62,10 @@ export function NewGoalModal({ isOpen, onClose, onAddGoal }: NewGoalModalProps) 
           <input
             type="text"
             required
-            placeholder="e.g. New Laptop, Tokyo Vacation, Emergency Fund"
+            placeholder="e.g. MacBook Pro, Tokyo Vacation, Emergency Fund"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1 block w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-zinc-900 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+            className="mt-1 block w-full rounded-lg border border-zinc-200/90 bg-white px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-emerald-500 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 transition-colors"
           />
         </div>
 
@@ -81,7 +81,7 @@ export function NewGoalModal({ isOpen, onClose, onAddGoal }: NewGoalModalProps) 
               placeholder="3,000.00"
               value={targetAmount}
               onChange={(e) => setTargetAmount(e.target.value)}
-              className="mt-1 block w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-zinc-900 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+              className="mt-1 block w-full rounded-lg border border-zinc-200/90 bg-white px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-emerald-500 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 transition-colors"
             />
           </div>
 
@@ -95,7 +95,7 @@ export function NewGoalModal({ isOpen, onClose, onAddGoal }: NewGoalModalProps) 
               placeholder="0.00"
               value={initialAmount}
               onChange={(e) => setInitialAmount(e.target.value)}
-              className="mt-1 block w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-zinc-900 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+              className="mt-1 block w-full rounded-lg border border-zinc-200/90 bg-white px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-emerald-500 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 transition-colors"
             />
           </div>
         </div>
@@ -108,7 +108,7 @@ export function NewGoalModal({ isOpen, onClose, onAddGoal }: NewGoalModalProps) 
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value as SavingsGoal['category'])}
-              className="mt-1 block w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 focus:border-zinc-900 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+              className="mt-1 block w-full rounded-lg border border-zinc-200/90 bg-white px-3 py-2 text-sm text-zinc-900 focus:border-emerald-500 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 transition-colors"
             >
               <option value="emergency">Emergency Fund</option>
               <option value="travel">Travel & Vacation</option>
@@ -127,7 +127,7 @@ export function NewGoalModal({ isOpen, onClose, onAddGoal }: NewGoalModalProps) 
               type="date"
               value={targetDate}
               onChange={(e) => setTargetDate(e.target.value)}
-              className="mt-1 block w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 focus:border-zinc-900 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+              className="mt-1 block w-full rounded-lg border border-zinc-200/90 bg-white px-3 py-2 text-sm text-zinc-900 focus:border-emerald-500 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 transition-colors"
             />
           </div>
         </div>
@@ -142,7 +142,7 @@ export function NewGoalModal({ isOpen, onClose, onAddGoal }: NewGoalModalProps) 
             placeholder="e.g. 200"
             value={monthlyContribution}
             onChange={(e) => setMonthlyContribution(e.target.value)}
-            className="mt-1 block w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-zinc-900 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+            className="mt-1 block w-full rounded-lg border border-zinc-200/90 bg-white px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-emerald-500 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 transition-colors"
           />
         </div>
 

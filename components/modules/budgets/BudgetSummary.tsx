@@ -13,28 +13,28 @@ export function BudgetSummary({ budgets }: { budgets: Budget[] }) {
   const overBudgetCategories = budgets.filter((b) => b.spent > b.limit);
 
   return (
-    <Card className="p-6">
+    <Card className="p-5 sm:p-7 border border-zinc-200/80 dark:border-zinc-800/80">
       <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-        {/* Left Side: Big Numbers */}
+        {/* Left Side: Core Numbers */}
         <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Total Monthly Budget (November)
           </p>
           <div className="flex flex-wrap items-baseline gap-3">
-            <span className="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">
+            <span className="text-3xl sm:text-4xl font-extrabold tracking-tight tabular-nums text-zinc-950 dark:text-zinc-50">
               {formatCurrency(totalSpent)}
             </span>
-            <span className="text-sm sm:text-base font-medium text-zinc-400">
+            <span className="text-xs sm:text-sm font-medium text-zinc-400 dark:text-zinc-500 tabular-nums">
               of {formatCurrency(totalLimit)} limit
             </span>
           </div>
 
           <div className="flex flex-wrap items-center gap-4 text-xs">
             <div className="flex items-center gap-1.5">
-              <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+              <span className="font-semibold tabular-nums text-zinc-900 dark:text-zinc-100">
                 {formatCurrency(Math.max(0, remaining))}
               </span>
-              <span className="text-zinc-500 dark:text-zinc-400">remaining to spend</span>
+              <span className="text-zinc-500 dark:text-zinc-400">remaining allowance</span>
             </div>
 
             {overBudgetCategories.length > 0 ? (
@@ -51,17 +51,17 @@ export function BudgetSummary({ budgets }: { budgets: Budget[] }) {
           </div>
         </div>
 
-        {/* Right Side: Progress Gauge */}
+        {/* Right Side: Progress Meter */}
         <div className="w-full lg:max-w-md space-y-2">
           <div className="flex items-center justify-between text-xs font-semibold">
-            <span className="text-zinc-700 dark:text-zinc-300">Overall Consumption</span>
-            <span className={percentage > 100 ? 'text-rose-600' : 'text-zinc-900 dark:text-zinc-100'}>
+            <span className="text-zinc-600 dark:text-zinc-400">Monthly Consumption</span>
+            <span className={`tabular-nums ${percentage > 100 ? 'text-rose-600' : 'text-zinc-900 dark:text-zinc-100'}`}>
               {percentage.toFixed(1)}%
             </span>
           </div>
           <ProgressBar value={totalSpent} max={totalLimit} size="lg" />
           <p className="text-[11px] text-zinc-400 dark:text-zinc-500 text-right">
-            13 days left in billing cycle
+            13 days remaining in billing cycle
           </p>
         </div>
       </div>

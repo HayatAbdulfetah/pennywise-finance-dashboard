@@ -8,30 +8,29 @@ import { formatCurrency } from '@/lib/utils';
 import { CATEGORY_CONFIG } from '@/lib/constants';
 
 export function BudgetOverviewCard({ budgets }: { budgets: Budget[] }) {
-  // Take top 4 budgets
   const topBudgets = budgets.slice(0, 4);
 
   return (
-    <Card>
+    <Card className="flex flex-col justify-between p-5 sm:p-6">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
             <CardTitle>Budget Health</CardTitle>
-            <CardDescription>Top spending categories for this month</CardDescription>
+            <CardDescription>Top category spending for November</CardDescription>
           </div>
           <Link
             href="/budgets"
-            className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors"
           >
             <span>All Budgets</span>
-            <IconChevronRight size={14} />
+            <IconChevronRight size={13} />
           </Link>
         </div>
       </CardHeader>
 
       <CardContent className="space-y-4">
         {topBudgets.map((b) => {
-          const catConfig = CATEGORY_CONFIG[b.category];
+          const catConfig = CATEGORY_CONFIG[b.category] || CATEGORY_CONFIG.other;
           const percent = (b.spent / b.limit) * 100;
           const isOver = percent > 100;
 
@@ -48,11 +47,11 @@ export function BudgetOverviewCard({ budgets }: { budgets: Budget[] }) {
                     {b.name}
                   </span>
                 </div>
-                <div className="text-right">
-                  <span className={isOver ? 'font-bold text-rose-600 dark:text-rose-400' : 'text-zinc-700 dark:text-zinc-300'}>
+                <div className="text-right tabular-nums">
+                  <span className={isOver ? 'font-bold text-rose-600 dark:text-rose-400' : 'text-zinc-700 dark:text-zinc-300 font-medium'}>
                     {formatCurrency(b.spent)}
                   </span>
-                  <span className="text-zinc-400"> / {formatCurrency(b.limit)}</span>
+                  <span className="text-zinc-400 text-[11px]"> / {formatCurrency(b.limit)}</span>
                 </div>
               </div>
 

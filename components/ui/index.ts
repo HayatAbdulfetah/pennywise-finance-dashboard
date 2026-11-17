@@ -5,3 +5,4 @@ export * from './Badge';
 export * from './StatCard';
 export * from './ProgressBar';
 export * from './Modal';
+export * from './ThemeToggle';

@@ -15,7 +15,7 @@ export function Badge({
 }: BadgeProps) {
   const variants = {
     default:
-      'bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 border-zinc-200/60 dark:border-zinc-700/60',
+      'bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 border-zinc-200/80 dark:border-zinc-700/80',
     success:
       'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400 border-emerald-200/60 dark:border-emerald-800/60',
     danger:
@@ -29,7 +29,7 @@ export function Badge({
   };
 
   const dotColors = {
-    default: 'bg-zinc-400',
+    default: 'bg-zinc-400 dark:bg-zinc-500',
     success: 'bg-emerald-500',
     danger: 'bg-rose-500',
     warning: 'bg-amber-500',
@@ -40,7 +40,7 @@ export function Badge({
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium transition-colors',
+        'inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5 text-[11px] font-medium leading-none tracking-tight transition-colors',
         variants[variant],
         className
       )}

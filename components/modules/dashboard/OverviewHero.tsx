@@ -19,7 +19,7 @@ export function OverviewHero({ overview }: { overview: FinancialOverview }) {
           value: 3.4,
           periodText: 'vs last month',
         }}
-        icon={<IconWallet size={20} className="text-zinc-700 dark:text-zinc-300" />}
+        icon={<IconWallet size={18} className="text-emerald-600 dark:text-emerald-400" />}
       />
 
       <StatCard
@@ -29,7 +29,7 @@ export function OverviewHero({ overview }: { overview: FinancialOverview }) {
           value: overview.incomeChangePercent,
           periodText: 'vs last month',
         }}
-        icon={<IconArrowUpRight size={20} className="text-emerald-600 dark:text-emerald-400" />}
+        icon={<IconArrowUpRight size={18} className="text-emerald-600 dark:text-emerald-400" />}
       />
 
       <StatCard
@@ -40,14 +40,14 @@ export function OverviewHero({ overview }: { overview: FinancialOverview }) {
           periodText: 'vs last month',
           inverse: true,
         }}
-        icon={<IconArrowDownRight size={20} className="text-rose-600 dark:text-rose-400" />}
+        icon={<IconArrowDownRight size={18} className="text-rose-600 dark:text-rose-400" />}
       />
 
       <StatCard
         title="Net Savings"
         value={formatCurrency(overview.netSavings)}
-        subtitle={`${overview.savingsRate}% savings rate`}
-        icon={<IconPiggyBank size={20} className="text-indigo-600 dark:text-indigo-400" />}
+        subtitle={`${overview.savingsRate}% monthly savings rate`}
+        icon={<IconPiggyBank size={18} className="text-emerald-600 dark:text-emerald-400" />}
       />
     </div>
   );

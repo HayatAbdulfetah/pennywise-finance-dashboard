@@ -51,7 +51,7 @@ export function CreateBudgetModal({
       isOpen={isOpen}
       onClose={onClose}
       title="Create Category Budget"
-      description="Define a monthly spending limit for a specific category."
+      description="Define a monthly spending allowance for a specific category."
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -61,7 +61,7 @@ export function CreateBudgetModal({
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value as TransactionCategory)}
-            className="mt-1 block w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 focus:border-zinc-900 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+            className="mt-1 block w-full rounded-lg border border-zinc-200/90 bg-white px-3 py-2 text-sm text-zinc-900 focus:border-emerald-500 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 transition-colors"
           >
             {Object.entries(CATEGORY_CONFIG).map(([key, config]) => (
               <option key={key} value={key}>
@@ -80,7 +80,7 @@ export function CreateBudgetModal({
             placeholder={CATEGORY_CONFIG[category]?.label || 'e.g. Daily Groceries'}
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1 block w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-zinc-900 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+            className="mt-1 block w-full rounded-lg border border-zinc-200/90 bg-white px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-emerald-500 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 transition-colors"
           />
         </div>
 
@@ -95,7 +95,7 @@ export function CreateBudgetModal({
             placeholder="500.00"
             value={limit}
             onChange={(e) => setLimit(e.target.value)}
-            className="mt-1 block w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-zinc-900 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+            className="mt-1 block w-full rounded-lg border border-zinc-200/90 bg-white px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-emerald-500 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 transition-colors"
           />
         </div>
 
